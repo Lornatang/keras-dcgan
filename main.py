@@ -1,3 +1,11 @@
+"""
+  This code is the implementation of DCGAN, implemented temporarily with keras,
+  and then converted to the tensorflow system
+  
+  author: Lornatang
+  Time: 11/7/2018
+"""
+
 from keras.models import Sequential
 from keras.layers import Dense
 from keras.layers import Reshape
@@ -15,6 +23,9 @@ import math
 
 
 def generator_model():
+    """Generate the code model.
+       Used to create random noise data to generate visual images
+    """
     model = Sequential()
     model.add(Dense(input_dim=100, output_dim=1024))
     model.add(Activation('relu'))
@@ -36,8 +47,7 @@ def discriminator_model():
     model.add(
         Conv2D(64, (5, 5),
                padding='same',
-               input_shape=(28, 28, 1))
-    )
+               input_shape=(28, 28, 1)))
     model.add(Activation('relu'))
     model.add(MaxPooling2D(pool_size=(2, 2)))
     model.add(Conv2D(128, (5, 5)))
